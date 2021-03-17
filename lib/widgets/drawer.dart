@@ -31,6 +31,19 @@ class MyDrawer extends StatelessWidget {
               CupertinoIcons.profile_circled,
             ),
             title: Text("Profile"),
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(
+              CupertinoIcons.info,
+            ),
+            title: Text("About"),
+          ),
+          Divider(),
+          Text(
+            'version 0.1',
+            style: TextStyle(color: Colors.grey),
+            textAlign: TextAlign.center,
           )
         ],
       ),
