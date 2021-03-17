@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {
   final imageUrl =
-      "https://www.google.com/url?sa=i&url=https%3A%2F%2Ftwitter.com%2Fiamjdpatel&psig=AOvVaw28OrRz8AEPxOiuu3vDaJ4M&ust=1616008739860000&source=images&cd=vfe&ved=2ahUKEwiyqrXow7XvAhUX_TgGHVLnDFwQjRx6BAgAEAc";
+      "https://pbs.twimg.com/profile_images/1303233402619834368/9esdqJh2_400x400.jpg";
   @override
   Widget build(BuildContext context) {
     return Drawer(
