@@ -29,29 +29,29 @@ class HomeDetailsPage extends StatelessWidget {
               color: Colors.lightBlue[50],
               width: MediaQuery.of(context).size.width,
               child: Padding(
-                padding: const EdgeInsets.all(32.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: [
                     Text(
                       catalog.name,
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
                     ),
                     Text(
                       catalog.desc,
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     Text(
                       "\$${catalog.price.toString()}",
                       style: TextStyle(
                           fontWeight: FontWeight.w900,
-                          fontSize: 30,
+                          fontSize: 24,
                           color: Colors.black),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     MaterialButton(
                       minWidth: 150,
@@ -59,7 +59,7 @@ class HomeDetailsPage extends StatelessWidget {
                       color: Colors.blueAccent,
                       textColor: Colors.white,
                       child: Text(
-                        'Buy',
+                        'Add to Cart',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 18),
                       ),

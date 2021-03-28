@@ -69,7 +69,7 @@ class CatalogItem extends StatelessWidget {
                           color: Colors.black),
                     ),
                     ElevatedButton(
-                      child: Text('Buy'),
+                      child: Text('Add to Cart'),
                       onPressed: () {
                         print('Buying ${catalog.name.toString()}');
                       },
