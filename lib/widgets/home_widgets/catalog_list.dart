@@ -8,7 +8,7 @@ class CatalogList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (context, index) {
-        final catalog = CatalogModel.items[index];
+        final catalog = CatalogModel.getByPosition(index);
         return InkWell(
           child: CatalogItem(catalog: catalog),
           onTap: () => Navigator.push(
@@ -63,9 +63,8 @@ class CatalogItem extends StatelessWidget {
                   children: [
                     Text(
                       "\$${catalog.price.toString()}",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w900,
-                          fontSize: 18),
+                      style:
+                          TextStyle(fontWeight: FontWeight.w900, fontSize: 18),
                     ),
                     ElevatedButton(
                       child: Text('Add to Cart'),
