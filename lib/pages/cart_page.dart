@@ -39,7 +39,10 @@ class _CartTotal extends StatelessWidget {
             ),
             ElevatedButton(
               child: Text('Buy'),
-              onPressed: () {},
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Buying not supported yet.")));
+              },
             ),
           ],
         ),
