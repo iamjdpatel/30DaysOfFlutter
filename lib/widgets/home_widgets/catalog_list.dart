@@ -65,8 +65,7 @@ class CatalogItem extends StatelessWidget {
                       "\$${catalog.price.toString()}",
                       style: TextStyle(
                           fontWeight: FontWeight.w900,
-                          fontSize: 18,
-                          color: Colors.black),
+                          fontSize: 18),
                     ),
                     ElevatedButton(
                       child: Text('Add to Cart'),

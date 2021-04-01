@@ -8,12 +8,12 @@ class CatalogImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       child: Image.network(
         image,
-        fit: BoxFit.cover,
+        fit: BoxFit.scaleDown,
       ),
-      width: 80,
+      width: 100,
     );
   }
 }

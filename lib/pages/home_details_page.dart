@@ -26,7 +26,6 @@ class HomeDetailsPage extends StatelessWidget {
                 )),
             Expanded(
                 child: Container(
-              color: Colors.lightBlue[50],
               width: MediaQuery.of(context).size.width,
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -45,10 +44,8 @@ class HomeDetailsPage extends StatelessWidget {
                     ),
                     Text(
                       "\$${catalog.price.toString()}",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w900,
-                          fontSize: 24,
-                          color: Colors.black),
+                      style:
+                          TextStyle(fontWeight: FontWeight.w900, fontSize: 24),
                     ),
                     SizedBox(
                       height: 10,
