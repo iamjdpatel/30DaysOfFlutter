@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/models/catalog.dart';
+import 'package:flutter_catalog/widgets/home_widgets/add_to_cart.dart';
 
 class HomeDetailsPage extends StatelessWidget {
   final Item catalog;
@@ -50,20 +51,7 @@ class HomeDetailsPage extends StatelessWidget {
                     SizedBox(
                       height: 10,
                     ),
-                    MaterialButton(
-                      minWidth: 150,
-                      height: 45,
-                      color: Colors.blueAccent,
-                      textColor: Colors.white,
-                      child: Text(
-                        'Add to Cart',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      ),
-                      onPressed: () {
-                        print('Buying ${catalog.name.toString()}');
-                      },
-                    )
+                    AddToCart(catalog: catalog)
                   ],
                 ),
               ),

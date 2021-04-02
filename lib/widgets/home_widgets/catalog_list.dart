@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_catalog/models/cart.dart';
 import 'package:flutter_catalog/models/catalog.dart';
 import 'package:flutter_catalog/pages/home_details_page.dart';
+import 'add_to_cart.dart';
 import 'catalog_image.dart';
 
 class CatalogList extends StatelessWidget {
@@ -67,41 +67,12 @@ class CatalogItem extends StatelessWidget {
                       style:
                           TextStyle(fontWeight: FontWeight.w900, fontSize: 18),
                     ),
-                    _AddToCart(catalog: catalog),
+                    AddToCart(catalog: catalog),
                   ],
                 ),
               ],
             ),
           ),
         ));
-  }
-}
-
-class _AddToCart extends StatefulWidget {
-  final Item catalog;
-  const _AddToCart({
-    Key key,
-    this.catalog,
-  }) : super(key: key);
-
-  @override
-  __AddToCartState createState() => __AddToCartState();
-}
-
-class __AddToCartState extends State<_AddToCart> {
-  bool isAdded = false;
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      child: isAdded ? Icon(Icons.done) : Text('Add to Cart'),
-      onPressed: () {
-        isAdded = true;
-        final _catalog = CatalogModel();
-        final _cart = Cart();
-        _cart.catalog = _catalog;
-        _cart.add(widget.catalog);
-        setState(() {});
-      },
-    );
   }
 }
