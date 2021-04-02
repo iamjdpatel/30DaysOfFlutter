@@ -1,6 +1,10 @@
 import 'catalog.dart';
 
 class Cart {
+  static final cart = Cart._internal();
+  Cart._internal();
+  factory Cart() => cart;
+
   CatalogModel catalog;
   set setCatalog(CatalogModel newCatalog) {
     assert(newCatalog != null);

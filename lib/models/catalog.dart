@@ -1,4 +1,9 @@
 class CatalogModel {
+
+  static final cat = CatalogModel._internal();
+  CatalogModel._internal();
+  factory CatalogModel() => cat;
+
   static List<Item> items;
 
   //Get Iteam by id
