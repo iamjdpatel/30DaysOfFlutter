@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/models/cart.dart';
 
-class CartPage extends StatelessWidget {
+class CartPage extends StatefulWidget {
+  final Cart cart;
+
+  const CartPage({Key key, this.cart}) : super(key: key);
+  @override
+  _CartPageState createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,21 +21,27 @@ class CartPage extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(32.0),
-              child: _CartList(),
+              child: _CartList(cart: widget.cart),
             ),
           ),
           Divider(),
-          _CartTotal()
+          _CartTotal(cart: widget.cart)
         ],
       ),
     );
   }
 }
 
-class _CartTotal extends StatelessWidget {
+class _CartTotal extends StatefulWidget {
+  final Cart cart;
+  const _CartTotal({Key key, this.cart}) : super(key: key);
+  @override
+  __CartTotalState createState() => __CartTotalState();
+}
+
+class __CartTotalState extends State<_CartTotal> {
   @override
   Widget build(BuildContext context) {
-    final _cart = Cart();
     return SizedBox(
       height: 200,
       child: Padding(
@@ -36,7 +50,7 @@ class _CartTotal extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "\$${_cart.totalPrice}",
+              "\$${widget.cart.totalPrice}",
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
             ElevatedButton(
@@ -54,27 +68,29 @@ class _CartTotal extends StatelessWidget {
 }
 
 class _CartList extends StatefulWidget {
+  final Cart cart;
+  const _CartList({Key key, this.cart}) : super(key: key);
   @override
   __CartListState createState() => __CartListState();
 }
 
 class __CartListState extends State<_CartList> {
-  final _cart = Cart();
   @override
   Widget build(BuildContext context) {
-    return _cart.items.isEmpty
+    return widget.cart.items.isEmpty
         ? Text('No item added in Cart.')
         : ListView.builder(
-            itemCount: _cart.items?.length,
+            itemCount: widget.cart.items?.length,
             itemBuilder: (context, index) => ListTile(
               leading: Icon(Icons.done),
               trailing: IconButton(
                   icon: Icon(Icons.remove_circle_outline),
                   onPressed: () {
-                    _cart.remove(_cart.items[index]);
-                    setState(() { });
+                    setState(() {
+                      widget.cart.remove(widget.cart.items[index]);
+                    });
                   }),
-              title: Text(_cart.items[index].name),
+              title: Text(widget.cart.items[index].name),
             ),
           );
   }

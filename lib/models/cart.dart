@@ -5,8 +5,8 @@ class Cart {
   Cart._internal();
   factory Cart() => cart;
 
-  CatalogModel catalog;
-  set setCatalog(CatalogModel newCatalog) {
+  Catalog catalog;
+  set setCatalog(Catalog newCatalog) {
     assert(newCatalog != null);
     catalog = newCatalog;
   }

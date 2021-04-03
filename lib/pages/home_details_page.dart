@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/models/cart.dart';
 import 'package:flutter_catalog/models/catalog.dart';
 import 'package:flutter_catalog/widgets/home_widgets/add_to_cart.dart';
 
 class HomeDetailsPage extends StatelessWidget {
+  final Cart cart;
   final Item catalog;
 
-  const HomeDetailsPage({Key key, @required this.catalog})
+  const HomeDetailsPage({Key key, @required this.catalog, this.cart})
       : assert(catalog != null),
         super(key: key);
 
@@ -51,7 +53,7 @@ class HomeDetailsPage extends StatelessWidget {
                     SizedBox(
                       height: 10,
                     ),
-                    AddToCart(catalog: catalog)
+                    AddToCart(cart: cart, catalog: catalog)
                   ],
                 ),
               ),

@@ -1,8 +1,8 @@
-class CatalogModel {
+class Catalog {
 
-  static final cat = CatalogModel._internal();
-  CatalogModel._internal();
-  factory CatalogModel() => cat;
+  static final cat = Catalog._internal();
+  Catalog._internal();
+  factory Catalog() => cat;
 
   static List<Item> items;
 

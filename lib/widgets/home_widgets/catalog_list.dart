@@ -1,37 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/models/cart.dart';
 import 'package:flutter_catalog/models/catalog.dart';
 import 'package:flutter_catalog/pages/home_details_page.dart';
 import 'add_to_cart.dart';
 import 'catalog_image.dart';
 
-class CatalogList extends StatelessWidget {
+class CatalogList extends StatefulWidget {
+  final Cart cart;
+  const CatalogList({Key key, this.cart}) : super(key: key);
+  @override
+  _CatalogListState createState() => _CatalogListState();
+}
+
+class _CatalogListState extends State<CatalogList> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (context, index) {
-        final catalog = CatalogModel.items[index];
+        final catalog = Catalog.items[index];
         return InkWell(
-          child: CatalogItem(catalog: catalog),
+          child: CatalogItem(cart: widget.cart, catalog: catalog),
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => HomeDetailsPage(
+                      cart: widget.cart,
                       catalog: catalog,
                     )),
           ),
         );
       },
-      itemCount: CatalogModel.items.length,
+      itemCount: Catalog.items.length,
     );
   }
 }
 
-class CatalogItem extends StatelessWidget {
+class CatalogItem extends StatefulWidget {
+  final Cart cart;
   final Item catalog;
 
-  const CatalogItem({Key key, @required this.catalog})
+  const CatalogItem({Key key, @required this.catalog, this.cart})
       : assert(catalog != null),
         super(key: key);
+
+  @override
+  _CatalogItemState createState() => _CatalogItemState();
+}
+
+class _CatalogItemState extends State<CatalogItem> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -41,21 +57,21 @@ class CatalogItem extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: ListTile(
             leading: Hero(
-              tag: Key(catalog.id.toString()),
+              tag: Key(widget.catalog.id.toString()),
               child: CatalogImage(
-                image: catalog.image,
+                image: widget.catalog.image,
               ),
             ),
             title: Container(
                 child: Text(
-              catalog.name,
+              widget.catalog.name,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             )),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  catalog.desc.toString(),
+                  widget.catalog.desc.toString(),
                   style: TextStyle(fontSize: 13),
                 ),
                 SizedBox(height: 10),
@@ -63,11 +79,11 @@ class CatalogItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "\$${catalog.price.toString()}",
+                      "\$${widget.catalog.price.toString()}",
                       style:
                           TextStyle(fontWeight: FontWeight.w900, fontSize: 18),
                     ),
-                    AddToCart(catalog: catalog),
+                    AddToCart(cart: widget.cart, catalog: widget.catalog),
                   ],
                 ),
               ],
